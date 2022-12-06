@@ -1,46 +1,37 @@
 class HubsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_records
-   def index
-        hub=Hub.all
-        render json: hub, status: :ok
+    before_action :authorize
+
+    #display hubs only when user is login
+    def index
+        user = User.find_by(id: session[:user_id])
+        render json: Hub.all, status: :created
     end
 
-    def show
-        hub=find_hub
-        render json: hub
-       # render json:hub, serializer:HubReviewsSerializer
+     def show
+        user = User.find_by(id: session[:user_id])
+        hub = Hub.find(params[:id])
+        render json: hub, serializer: UserWithHubsSerializer, status: :ok
     end
 
-    def create
-        hub = Hub.create!(hub_params)
-        render json: hub, status: :created
-        #hero = Heroe.find(hero_power.heroe_id)
-        #render json: hub, serializer: EachHubReviewSerializer, status: :created
-    end
+    #only login users all allow to add new hub
+     def create
+        user = User.find_by(id: session[:user_id])
+        hub = Hub.create(hub_params.merge(user_id: user.id));
 
-    def destroy
-      hub=find_hub
-      hub.destroy
-      head :no_content
+        if hub.valid?
+            render json: hub, status: :created
+        else
+            render json: {errors: hub.errors.full_messages} , status: :unprocessable_entity
+        end
     end
 
     private
+    def authorize
+        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+    end
+
     def hub_params
-        params.permit(:name,:image,:location,:website_url,:description,:founder)
+        params.permit(:name, :image, :location,:website_url,:description,:founder)
     end
-
-    def find_hub
-       Hub.find(params[:id])
-    end
-
-    def render_not_found_response
-        render json: {error: "Hub not found"}, status: :not_found
-    end
-
-     def render_invalid_records(invalid)
-     render json: {error: invalid.record.errors}, status: :unprocessable_entity
-    end
-
-
 end
+

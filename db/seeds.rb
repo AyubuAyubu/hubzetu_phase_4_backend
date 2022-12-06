@@ -1,14 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
 puts "Seeding starting"
-Hub.destroy_all
 User.destroy_all
+Hub.destroy_all
 Review.destroy_all
+
+#create users
+user1=User.create(name:"esther",email:"esther@gmail.com",password:"1234")
+user2=User.create(name:"ayubu",email:"ayubu56@gmail.com",password:"ABCD")
+
+#create hubs
 hub1=Hub.create(
   name:"BEI HUB",
   image:"https://i.ibb.co/MCXZj3R/bei-hub.jpg",
@@ -27,11 +27,7 @@ hub2=Hub.create(
   founder:"Mahmoud Noor"
 )
 
-
-user1=User.create(name:"esther",email:"esther@gmail.com",password:"1234")
-user2=User.create(name:"ayubu",email:"ayubu56@gmail.com",password:"ABCD")
-
-
-review1=Review.create(hub_id:hub1.id,user_id:user2.id,comment:"Wonderful hub")
+#create reviews
+review1=Review.create(hub_id:hub1.id,user_id:user2.id,comment:"Help me to network")
 
 puts "seeding ending"
