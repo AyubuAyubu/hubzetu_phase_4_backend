@@ -1,14 +1,12 @@
 
 puts "Seeding starting"
-User.destroy_all
-Hub.destroy_all
-Review.destroy_all
-
 #create users
+User.destroy_all
 user1=User.create(name:"esther",email:"esther@gmail.com",password:"1234")
 user2=User.create(name:"ayubu",email:"ayubu56@gmail.com",password:"ABCD")
 
 #create hubs
+Hub.destroy_all
 hub1=Hub.create(
   name:"BEI HUB",
   image:"https://i.ibb.co/MCXZj3R/bei-hub.jpg",
@@ -28,6 +26,7 @@ hub2=Hub.create(
 )
 
 #create reviews
+Review.destroy_all
 review1=Review.create(hub_id:hub1.id,user_id:user2.id,comment:"Help me to network")
 
 puts "seeding ending"

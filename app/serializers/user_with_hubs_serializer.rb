@@ -1,4 +1,4 @@
 class UserWithHubsSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :password_digest
+  attributes :id ,:name, :location, :website_url,:description, :founder
   has_many :hubs
 end
