@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
         user=check_user
         hub = Hub.find_by(id: params[:id])
         #review = hub.reviews.create(review_params)
-        review=Review.create(hub_id:hub.id,user_id:user.id,comment:params[:comment])
+        review=Review.create(review_params)
         if review.valid?
          render json: review, status: :created
         else
@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require(:review).permit(:hub_id, :user_id, :comment)
+        params.permit(hub_id:hub.id,user_id:user.id,comment:params[:comment])
         #params.permit(:hub_id, :user_id, :comment)
     end
 
