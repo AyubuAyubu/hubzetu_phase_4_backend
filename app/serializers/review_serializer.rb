@@ -1,4 +1,4 @@
 class ReviewSerializer < ActiveModel::Serializer
-  belongs_to :hub
-  belongs_to :user
+  attributes :id , :user_id , :hub_id , :comment
+
 end

@@ -17,7 +17,7 @@ hub1=Hub.create(
 founder:"Dr.Mathew M. Egessa"
 )
 hub2=Hub.create(
-  name:"SWAHILIPOT",
+  name:"SWAHILIPOT HUB",
   image:"https://i.ibb.co/gR0QgYX/swahilipot.jpg",
   location:"Mombasa Governor Office",
   website_url:"https://www.swahilipothub.co.ke/",
@@ -26,16 +26,18 @@ hub2=Hub.create(
 )
 hub3=Hub.create(
   name: "CLOSE THE GAP",
+  image:"https://i.ibb.co/Khc1Bnj/closegap.jpg",
   location:"Ratna Square",
-  image: "https://www.close-the-gap.org/",
+  website_url: "https://www.close-the-gap.org/",
   description: "Close the Gap CVBA's aim is to make impact on a global level by investing in local technology and solutions.",
   founder:"Vanden Eynde"
 
 )
 hub4=Hub.create(
   name: "TECHBRIDGE INVEST",
-  location:"City Mall",
   image: "https://i.ibb.co/vkwJPpF/techbridge.jpg",
+  location:"City Mall",
+  website_url:"https://www.techbridgeinvest.com/",
   description: "TechBridge Invest aims to give entrepreneurship-training and invest in areas where we can have the greatest impact
 ",
   founder:"Brad Anderson"
@@ -43,19 +45,38 @@ hub4=Hub.create(
 )
 hub5=Hub.create(
   name: "ELDO HUB",
-  location:"Kiptagich House",
   image: "https://i.ibb.co/z2XpxC0/eldo-hub.jpg",
+  location:"Kiptagich House",
+  website_url:"https://www.eldohub.co.ke/",
   description: "We are an innovation centre dedicated to accelerating the application of social capital and technology for economic prosperity
 ",
   founder:"Erik Hersman"
 )
 hub6=Hub.create(
   name: "SOTE HUB",
-  location:"Bella Rosa House",
   image: "https://i.ibb.co/z2XpxC0/eldo-hub.jpg",
+  location:"Bella Rosa House",
+  website_url:"https://sotehub.com/"
   description: "Sote Hub provides support in developing a solid business and action plan for implementing the innovation in Burkina Faso and in establishing the needed networks
 ",
   founder:"Jakub Šimek"
+)
+hub7=Hub.create(
+  name: "iHUB",
+  image: "https://i.ibb.co/rdThD5z/ihub.jpg",
+  location:"Senteu Plaza",
+  website_url:"https://ihub.co.ke/"
+  description: "We are an innovation centre dedicated to accelerating the application of social capital and technology for economic prosperity",
+  founder:"Erik Hersman"
+)
+hub8=Hub.create(
+  name: "NAILAB",
+  image: "https://i.ibb.co/vJfrCKy/nailab.jpg",
+  location:"Bishop Magua Centre",
+  website_url:"https://nailab.co/"
+  description:"Nailab tries to lower the entry barriers for ICT entrepreneurs who want to start and scale their businesses in Kenya
+",
+  founder:"Tonee Ndungu"
 )
 #create reviews
 Review.destroy_all
