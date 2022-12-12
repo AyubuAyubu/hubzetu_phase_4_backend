@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post "/register_hub", to: "hubs#create"
   get "/reviews", to:"reviews#index"
   post "/hubs/:id/review", to: "reviews#create_review"
+  delete "/hubs/:id/review/:id", to: "reviews#destroy"
 end
